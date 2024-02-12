@@ -1,14 +1,8 @@
 package com.Implycitt;
 
-/**
- * Hello world!
- *
- */
-public class App 
+public class App
 {
-    public static void main( String[] args )
-    {
-        // Api.call();
-        Window.createWindow();
+    public static void main(String[] args) {
+        Window convert = new Window();
     }
 }

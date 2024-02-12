@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 
 import java.util.Scanner;
 
+import javax.swing.JTextField;
+
 public class Globals {
   
   public static int amount = 5000;
