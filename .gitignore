@@ -39,4 +39,5 @@ buildNumber.properties
 hs_err_pid*
 
 #others
+.vscode/*
 .env
