@@ -8,6 +8,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        Api.call();
+        // Api.call();
+        Window.createWindow();
     }
 }
