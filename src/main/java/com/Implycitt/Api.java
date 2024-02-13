@@ -3,9 +3,15 @@ package com.Implycitt;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpClient;
-import java.io.IOException;
 import java.net.URI;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.json.simple.*;
+import org.json.simple.parser.*;
 
 public class Api {
   public static void main(String[] args) throws IOException {
@@ -29,13 +35,30 @@ public class Api {
     HttpResponse<String> response;
     try {
       response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-      System.out.println(response.body());
+      File write = new File("data.json");
+      write.createNewFile();
+      FileWriter writer = new FileWriter("data.json");
+      writer.write(String.valueOf(response.body()));
+      writer.close();
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     } catch (InterruptedException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
+  }
+
+  public static String getFinalAmount() {
+    String finalAmount = "";
+    JSONParser parser = new JSONParser();
+    try {
+        Object obj = parser.parse(new FileReader("/Users/User/Desktop/course.json"));
+        JSONObject jsonObject = (JSONObject)obj;
+        finalAmount = (String)jsonObject.get("new_amount");
+        return finalAmount;
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return finalAmount;
   }
 }

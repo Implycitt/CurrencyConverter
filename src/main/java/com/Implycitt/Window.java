@@ -45,8 +45,8 @@ public class Window implements ActionListener {
       Globals.amount = Integer.parseInt(am.getText());
       Globals.have = (String) have.getSelectedItem();
       Globals.want = (String) want.getSelectedItem();
-      returned = Api.call();
-      out.setText(returned);
+      // returned = Api.call();
+      // out.setText(returned);
     }
   }
 }
