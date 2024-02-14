@@ -1,4 +1,4 @@
-package com.Implycitt;
+package org.example;
 
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -10,8 +10,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.json.simple.*;
-import org.json.simple.parser.*;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class Api {
   public static void main(String[] args) throws IOException {
@@ -47,18 +47,17 @@ public class Api {
     }
   }
 
-  public static String getFinalAmount() {
-    String finalAmount = "";
+  public static Object getFinalAmount() {
+    double finalAmount = 0.0;
     JSONParser parser = new JSONParser();
     try {
-        Object obj = parser.parse(new FileReader("/Users/User/Desktop/course.json"));
-        JSONObject jsonObject = (JSONObject)obj;
-        finalAmount = (String)jsonObject.get("new_amount");
-        return finalAmount;
+        Object obj = parser.parse(new FileReader("data.json"));
+        JSONObject jsonObject = (JSONObject) obj;
+        return jsonObject.get("new_amount");
 
     } catch (Exception e) {
       e.printStackTrace();
     }
-    return finalAmount;
+    return (Object) finalAmount;
   }
 }

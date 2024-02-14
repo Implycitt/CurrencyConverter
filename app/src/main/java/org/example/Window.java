@@ -1,4 +1,4 @@
-package com.Implycitt;
+package org.example;
 
 import java.awt.Color;
 import java.awt.event.*;
@@ -29,6 +29,19 @@ public class Window implements ActionListener {
     frame.add(am);
     frame.add(out);
 
+    convert.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == convert) {
+          Globals.amount = Integer.parseInt(am.getText());
+          Globals.have = (String) have.getSelectedItem();
+          Globals.want = (String) want.getSelectedItem();
+          Api.call();
+          String returned = Api.getFinalAmount().toString();
+          out.setText(returned);
+        }
+      }
+    });
 
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(800, 600);
@@ -41,12 +54,9 @@ public class Window implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    if (e.getSource() == convert) {
-      Globals.amount = Integer.parseInt(am.getText());
-      Globals.have = (String) have.getSelectedItem();
-      Globals.want = (String) want.getSelectedItem();
-      // returned = Api.call();
-      // out.setText(returned);
-    }
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
   }
+
+  
 }
